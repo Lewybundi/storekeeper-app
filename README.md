@@ -50,16 +50,16 @@ flutter run
 
 ```yaml
 dependencies:
-  flutter_riverpod: ^2.5.1
-  drift: ^2.16.0
-  drift_flutter: ^0.1.0
-  get_it: ^7.6.7
-  image_picker: ^1.0.7
-  path_provider: ^2.1.2
+  flutter_riverpod: ^3.0.3
+  drift: ^2.29.0
+  drift_flutter: ^0.2.7
+  get_it: ^8.2.0
+  image_picker: ^1.2.0
+  path_provider: ^2.1.0
 
 dev_dependencies:
-  drift_dev: ^2.16.0
-  build_runner: ^2.4.8
+  drift_dev: ^2.29.0
+  build_runner: ^2.7.1
 ```
 
 ## 📁 Project Structure
@@ -70,7 +70,7 @@ lib/
 ├── database/                    # Database layer
 ├── repository/                  # Data access
 ├── providers/                   # Riverpod providers
-├── screens/                     # UI screens
+├── ui/                     # UI screens
 └── service/                     # Service locator
 ```
 
@@ -87,9 +87,6 @@ flutter build appbundle --release
 flutter build ios --release
 ```
 
-## 📝 License
-
-MIT License - see [LICENSE](LICENSE) file
 
 ## 👨‍💻 Developer
 
