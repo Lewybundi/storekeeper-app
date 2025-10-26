@@ -1,287 +1,101 @@
 # Product Management App
 
-A Flutter-based product inventory management application with local database storage, image support, and real-time inventory tracking.
+A Flutter inventory management app with local database storage, image support, and real-time stock tracking.
 
-## Features
+## 📥 Download
 
-### 📦 Product Management
-- **Add Products**: Create new products with name, quantity, price, and images
-- **Edit Products**: Update existing product information
-- **Delete Products**: Remove products with confirmation dialog
-- **Image Support**: Attach product images using device camera or gallery
+[![Download APK](https://img.shields.io/badge/Download-APK-green?style=for-the-badge&logo=android)](https://github.com/Lewybundi/storekeeper-app/releases/download/v1.0.0/app-release.apk)
 
-### 🔍 Search & Filter
-- Real-time product search by name
-- Instant filtering as you type
+**Version**: 1.0.0 | **Min Android**: 5.0 (API 21)
 
-### 📊 Inventory Dashboard
-- **Total Inventory Value**: Calculate total worth of all products
-- **Low Stock Alerts**: Automatic warnings for products with quantity < 10
-- **Quick Overview**: View key metrics at a glance
+## 🎥 Demo Video
 
-### 💾 Data Persistence
-- Local SQLite database using Drift
-- Automatic data synchronization
-- Offline-first architecture
+Watch the app in action: [View Demo Video](https://drive.google.com/file/d/1yG5Fg-ZxCBg2kILrzE38cO5c8549iKs5/view?usp=sharing)
 
-## Screenshots
+## ✨ Features
 
-> Add screenshots of your app here
+- ✅ Add, edit, and delete products with images
+- 🔍 Real-time product search
+- 📊 Inventory dashboard with total value calculation
+- ⚠️ Low stock alerts (quantity < 10)
+- 💾 Offline-first with local SQLite database
+- 📸 Camera/gallery image support
 
-## Tech Stack
+## 🛠️ Tech Stack
 
-### Core Technologies
-- **Flutter**: UI framework
-- **Dart**: Programming language
+- **Flutter** - UI framework
+- **Riverpod** - State management
+- **Drift** - SQLite database ORM
+- **GetIt** - Dependency injection
+- **Image Picker** - Image selection
 
-### State Management
-- **Riverpod**: Modern reactive state management
-- StateNotifier for complex state
-- AsyncValue for async operations
+## 🚀 Quick Start
 
-### Database
-- **Drift**: Type-safe SQL database wrapper
-- SQLite for local storage
-- Automatic migration support
-
-### Dependencies
-- `flutter_riverpod: ^2.5.1` - State management
-- `drift: ^2.16.0` - Database ORM
-- `drift_flutter: ^0.1.0` - Flutter integration for Drift
-- `get_it: ^7.6.7` - Service locator / dependency injection
-- `image_picker: ^1.0.7` - Image selection from gallery/camera
-- `path_provider: ^2.1.2` - File system paths
-
-### Dev Dependencies
-- `drift_dev: ^2.16.0` - Code generation for Drift
-- `build_runner: ^2.4.8` - Build system
-
-## Project Structure
-
-```
-lib/
-├── main.dart                      # App entry point
-├── database/
-│   ├── db.dart                    # Database configuration
-│   ├── db.g.dart                  # Generated database code
-│   └── tables.dart                # Table definitions
-├── repository/
-│   └── products_repo.dart         # Data access layer
-├── providers/
-│   └── product_providers.dart     # Riverpod providers
-├── screens/
-│   └── products_screen.dart       # UI screens
-└── service/
-    └── locator.dart               # Service locator setup
-```
-
-## Getting Started
-
-### Prerequisites
-- Flutter SDK (3.0.0 or higher)
-- Dart SDK (3.0.0 or higher)
-- Android Studio / VS Code with Flutter extensions
-
-### Installation
-
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/yourusername/product-management-app.git
-   cd product-management-app
-   ```
-
-2. **Install dependencies**
-   ```bash
-   flutter pub get
-   ```
-
-3. **Generate database code**
-   ```bash
-   flutter pub run build_runner build --delete-conflicting-outputs
-   ```
-
-4. **Run the app**
-   ```bash
-   flutter run
-   ```
-
-### Configuration
-
-#### Database Schema
-The app uses a single `Product` table with the following structure:
-
-| Column | Type | Description |
-|--------|------|-------------|
-| id | INTEGER | Primary key (auto-increment) |
-| product | TEXT | Product name (3-30 characters) |
-| quantity | INTEGER | Stock quantity |
-| price | REAL | Product price |
-| productImage | BLOB | Product image (optional) |
-| createdAt | DATETIME | Creation timestamp |
-
-## Usage
-
-### Adding a Product
-1. Tap the **"Add Product"** floating action button
-2. Tap the image placeholder to select a product image (optional)
-3. Enter product name, quantity, and price
-4. Tap **"Add Product"** to save
-
-### Editing a Product
-1. Tap the **edit icon** (pencil) on any product card
-2. Modify the product details
-3. Tap **"Update Product"** to save changes
-
-### Deleting a Product
-1. Tap the **delete icon** (trash) on any product card
-2. Confirm deletion in the dialog
-
-### Viewing Dashboard
-1. Tap the **dashboard icon** in the app bar
-2. View total inventory value and low stock alerts
-
-### Searching Products
-1. Type in the search bar at the top
-2. Results filter automatically as you type
-
-## Architecture
-
-### State Management Pattern
-```
-UI Layer (Widgets)
-    ↕
-Providers (Riverpod)
-    ↕
-Repository Layer
-    ↕
-Database (Drift/SQLite)
-```
-
-### Key Providers
-
-- **`productListProvider`**: Manages the list of all products
-- **`productByIdProvider`**: Fetches a single product by ID
-- **`productSearchProvider`**: Handles search/filter functionality
-- **`totalInventoryValueProvider`**: Calculates total inventory worth
-- **`lowStockProductsProvider`**: Filters products with low stock
-
-## Features in Detail
-
-### Low Stock Monitoring
-Products with quantity less than 10 are automatically flagged:
-- Orange badge on product cards
-- Listed in dashboard
-- Visual warning indicators
-
-### Inventory Calculations
-- **Total Value**: `Σ(price × quantity)` for all products
-- Real-time updates when products change
-- Displayed in dashboard with currency formatting
-
-### Image Handling
-- Images stored as BLOB in database
-- Compressed for efficient storage
-- Displayed with proper aspect ratio
-- Placeholder shown when no image available
-
-## Error Handling
-
-The app includes comprehensive error handling:
-- Database operation failures
-- Image picker cancellations
-- Form validation errors
-- Network-independent operation
-
-## Performance Optimizations
-
-- **Lazy Loading**: Products loaded on demand
-- **Efficient Rebuilds**: Riverpod minimizes unnecessary widget rebuilds
-- **Database Indexing**: Fast queries with proper indexing
-- **Image Compression**: Optimized image sizes
-
-## Building for Production
-
-### Android
 ```bash
-flutter build apk --release
-# or
-flutter build appbundle --release
-```
+# Clone repository
+git clone https://github.com/Lewybundi/storekeeper-app.git
+cd storekeeper-app
 
-### iOS
-```bash
-flutter build ios --release
-```
-
-## Testing
-
-### Run Tests
-```bash
-flutter test
-```
-
-### Generate Coverage
-```bash
-flutter test --coverage
-```
-
-## Troubleshooting
-
-### Common Issues
-
-**Issue**: Build runner fails
-```bash
-# Solution: Clean and rebuild
-flutter clean
+# Install dependencies
 flutter pub get
-flutter pub run build_runner build --delete-conflicting-outputs
-```
 
-**Issue**: Database not found
-```bash
-# Solution: Clear app data or reinstall
-flutter clean
+# Generate database code
+flutter pub run build_runner build --delete-conflicting-outputs
+
+# Run app
 flutter run
 ```
 
-**Issue**: Image picker not working
-- Ensure permissions are configured in AndroidManifest.xml and Info.plist
-- Check device/emulator has camera/gallery access
+## 📦 Dependencies
 
-## Contributing
+```yaml
+dependencies:
+  flutter_riverpod: ^2.5.1
+  drift: ^2.16.0
+  drift_flutter: ^0.1.0
+  get_it: ^7.6.7
+  image_picker: ^1.0.7
+  path_provider: ^2.1.2
 
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+dev_dependencies:
+  drift_dev: ^2.16.0
+  build_runner: ^2.4.8
+```
 
-## Future Enhancements
+## 📁 Project Structure
 
-- [ ] Export data to CSV/Excel
-- [ ] Barcode scanning for products
-- [ ] Product categories and tags
-- [ ] Sales tracking and analytics
-- [ ] Multi-user support with cloud sync
-- [ ] Print labels and reports
-- [ ] Dark mode improvements
-- [ ] Product history and audit logs
+```
+lib/
+├── main.dart                    # App entry
+├── database/                    # Database layer
+├── repository/                  # Data access
+├── providers/                   # Riverpod providers
+├── screens/                     # UI screens
+└── service/                     # Service locator
+```
 
-## License
+## 🏗️ Build for Production
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+```bash
+# Android APK
+flutter build apk --release
 
-## Acknowledgments
+# Android App Bundle
+flutter build appbundle --release
 
-- Flutter team for the amazing framework
-- Riverpod for excellent state management
-- Drift team for the powerful database solution
+# iOS
+flutter build ios --release
+```
 
-## Contact
+## 📝 License
 
-Your Name - [@yourtwitter](https://twitter.com/yourtwitter) - your.email@example.com
+MIT License - see [LICENSE](LICENSE) file
 
-Project Link: [https://github.com/yourusername/product-management-app](https://github.com/yourusername/product-management-app)
+## 👨‍💻 Developer
+
+**Lewy Bundi**
+
+GitHub: [@Lewybundi](https://github.com/Lewybundi)
 
 ---
 
