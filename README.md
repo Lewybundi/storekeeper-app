@@ -10,7 +10,7 @@ A Flutter inventory management app with local database storage, image support, a
 
 ## 🎥 Demo Video
 
-Watch the app in action: [View Demo Video](https://drive.google.com/file/d/1yG5Fg-ZxCBg2kILrzE38cO5c8549iKs5/view?usp=sharing)
+Watch the app in action: [View Demo Video](https://drive.google.com/file/d/1zcK4uQaqHdYezcPhA4R1J96z0gYPKAnw/view?usp=sharing)
 
 ## ✨ Features
 
